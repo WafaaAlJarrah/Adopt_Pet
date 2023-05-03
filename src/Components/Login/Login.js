@@ -1,31 +1,32 @@
 import "./Login.css";
 import Logo from "../../Images/logo.png";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { logIn } from "../../Redux/actions/AuthAction";
+export default function Login() {
+  const dispatch = useDispatch();
 
-export default function Signup() {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
-  //console.log(formData)
-  function handleChange(event) {
-    const { name, value, type, checked } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  }
+  
+  console.log(formData)
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  // function handleChange(event) {
+  //   const { name, value, type, checked } = event.target;
+  //   setFormData((prevFormData) => ({
+  //     ...prevFormData,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // }
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    if (formData.password === formData.passwordConfirm) {
-      console.log("Successfully Signed up");
-    } else {
-      console.log("Password Doesn't Match");
-      return;
-    }
+    dispatch(logIn(formData));
   }
 
   return (
@@ -34,7 +35,7 @@ export default function Signup() {
         Find your loyal companion and give them a forever home <br />
       </h3>
       <form className="form" onSubmit={handleSubmit}>
-        <img src = {Logo} alt="background" height={200}/>
+        <img src={Logo} alt="background" height={200} />
         <input
           type="email"
           placeholder="Email"
@@ -51,6 +52,21 @@ export default function Signup() {
           onChange={handleChange}
           value={formData.password}
         />
+        <div className="row" style={{ marginBottom: "5px" }}>
+          <span
+            style={{
+              fontSize: "14 px",
+              cursor: "pointer",
+              textDecoration: "underline",
+              marginRight: "5px",
+            }}
+          >
+            Don't have an account?
+          </span>
+          <Link to={"/Signup"} style={{ textDecoration: "none" }}>
+            Sign Up
+          </Link>
+        </div>
         <button className="form--submit"> Login </button>
       </form>
     </div>

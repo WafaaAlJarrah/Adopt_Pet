@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image:url("/src/Images/signup-bg.png");
+    background-image: url("/src/Images/signup-bg.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -38,7 +38,7 @@ body {
     border-bottom: 1px solid #639;
     padding: 5px;
     font-family: "Inter", sans-serif;
-    
+
 }
 
 .form--submit {
@@ -53,4 +53,11 @@ body {
 
 .form--submit:hover {
     background-color: rgb(197, 158, 235);
+}
+
+.confirmPass {
+    color: red;
+    font-size: 12px;
+    align-self: flex-start;
+    margin-right: 5px;
 }
