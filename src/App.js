@@ -7,15 +7,13 @@ import { useState } from "react";
 function App() {
   // const [IsSigup, setIsSigup] = useState(false);
   return (
-    
-      <div className="App">
-        <Routes>
-          {/* <Route path="/" element={!IsSigup ? <Signup /> : <Login />}></Route> */}
-          <Route path="/Login" element={<Login />}></Route>
-          <Route path="/SignUp" element={<Signup />}></Route>
-        </Routes>
-      </div>
-    
+    <div className="App">
+      <Routes>
+        {/* <Route path="/" element={!IsSigup ? <Signup /> : <Login />}></Route> */}
+        <Route path="/Login" element={<Login />}></Route>
+        <Route path="/SignUp" element={<Signup />}></Route>
+      </Routes>
+    </div>
   );
 }
 
