@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../Redux/actions/AuthAction";
 export default function Signup() {
+  // const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -41,7 +42,7 @@ export default function Signup() {
     //   return;
     // }
   }
-
+ 
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
