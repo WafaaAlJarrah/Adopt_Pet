@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import CatsModal from './CatsModal';
+import MyModal from "./Modal";
 
 
 function ModalPop() {
@@ -28,7 +28,7 @@ function ModalPop() {
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter"> Available types of Cats </Modal.Title>
         </Modal.Header>
-        <Modal.Body> <CatsModal /></Modal.Body>
+        <Modal.Body> <MyModal type="cat" /></Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

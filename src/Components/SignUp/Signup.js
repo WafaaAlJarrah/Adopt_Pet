@@ -16,7 +16,7 @@ export default function Signup() {
 
   const [confirmPass, setConfirmPass] = useState(true);
   const dispatch = useDispatch();
-  console.log(formData);
+  // console.log(formData);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -42,7 +42,7 @@ export default function Signup() {
     //   return;
     // }
   }
- 
+
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
@@ -92,6 +92,7 @@ export default function Signup() {
           className="form-input"
           name="phoneNB"
           onChange={handleChange}
+          value={formData.phoneNB}
         />
         <div className="row" style={{ marginBottom: "5px" }}>
           <span

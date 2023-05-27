@@ -10,10 +10,11 @@ const AuthReduder = (
     case "AUTH_START":
       return { ...state, loading: true, error: false };
     case "AUTH_SUCCESS":
-      console.log("here ", action);
+      console.log("AUTH data ", action.data.newUser);
       // localStorage to save the authentication data
-      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
-
+      localStorage.setItem("profile", JSON.stringify({ ...action?.data.newUser }));
+      const myItem = localStorage.getItem("profile");
+      console.log("user data: ", myItem);
       return {
         ...state,
         authData: action.data,

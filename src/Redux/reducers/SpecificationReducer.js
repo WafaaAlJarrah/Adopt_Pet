@@ -13,9 +13,10 @@ const SpecificationReducer = (
       return { ...state, uploading: true, error: false };
 
     case "UPLOAD_SUCCESS":
+      console.log("uploading data ", action.data);
       return {
         ...state,
-        specifications: [action.data, ...state.specifications],
+        specifications: [...state.specifications, action.data],
         uploading: false,
         error: false,
       };
@@ -26,11 +27,12 @@ const SpecificationReducer = (
         uploading: false,
         error: true,
       };
-    // catsModal.js or dogsModal.js !!!!!!
+    // catsModal.js or dogsModal.js 
     case "RETREIVING_START":
       return { ...state, loading: true, error: false };
 
     case "RETREIVING_SUCCESS":
+      console.log("retreiving data ", action.data);
       return {
         ...state,
         specifications: action.data,

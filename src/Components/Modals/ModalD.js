@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import DogsModal from './DogsModal';
-import   '../../App.css';
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import MyModal from "./Modal";
+import "../../App.css";
 function ModalPop() {
   const [show, setShow] = useState(false);
 
@@ -11,7 +11,10 @@ function ModalPop() {
 
   return (
     <>
-      <Button onClick={handleShow} style={{backgroundColor: "#333", color: "#fff", fontSize: "18px"}}>
+      <Button
+        onClick={handleShow}
+        style={{ backgroundColor: "#333", color: "#fff", fontSize: "18px" }}
+      >
         View Dogs
       </Button>
 
@@ -25,9 +28,14 @@ function ModalPop() {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Available Types of Dogs</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Available Types of Dogs
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body> < DogsModal/></Modal.Body>
+        <Modal.Body>
+          {" "}
+          <MyModal type="dog" />
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

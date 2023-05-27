@@ -8,7 +8,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 function NewSpec() {
-  const loading = useSelector((state) => state.SpecificationReducer.uploading);
+  const uploading = useSelector(
+    (state) => state.SpecificationReducer.uploading
+  );
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   const specif = useRef();
@@ -23,7 +25,9 @@ function NewSpec() {
   };
 
   const handleChange = (selectedOption) => {
+    console.log(type);
     setType(selectedOption.value);
+    console.log(type);
   };
 
   // Reset form
@@ -64,8 +68,8 @@ function NewSpec() {
 
   return (
     <>
-      <Button onClick={handleSubmit} disabled={loading}>
-        {loading ? "uploading..." : "Share"}
+      <Button onClick={handleSubmit} disabled={uploading}>
+        {uploading ? "uploading..." : "Share"}
       </Button>
       <input
         type="text"

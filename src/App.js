@@ -7,6 +7,9 @@ import Login from "./Components/Login/Login.js";
 import Signup from "./Components/SignUp/Signup.js";
 import { useState } from "react";
 import NewSpec from "./Components/NewSpec";
+import NewAnimal from "./Components/NewAnimal.js";
+import AllAnimals from "./Components/AllAnimals";
+// import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
   // const user = useSelector((state) => state.authReducer.authData);
@@ -16,7 +19,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/addNewOne" element= {<NewSpec/>}/>
+        <Route
+          path="/allAnimal/:specificationId"
+          element={<AllAnimals />}
+        ></Route>
+        <Route path="/newSpecification" element={<NewSpec />} />
+        <Route path="/newAnimal" element={<NewAnimal />} />
         {/* <Route path="/" element={!IsSigup ? <Signup /> : <Login />}></Route> */}
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/SignUp" element={<Signup />}></Route>
