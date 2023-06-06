@@ -6,6 +6,7 @@ import { likeAnimal } from "../Redux/api/AnimalRequest";
 import AdoptButton from "./Buttons/AdoptButton";
 import DeleteButton from "./Buttons/DeleteButton";
 import UpdateButton from "./Buttons/UpdateButton";
+import { Link } from "react-router-dom";
 function AnimalCard({ animal }) {
   //   const { user } = useSelector((state) => state.AuthReduder.authData);
   //   const [liked, setLiked] = useState(animal.likes.includes(user._id));
@@ -20,7 +21,7 @@ function AnimalCard({ animal }) {
   };
   return (
     <>
-      {/* <Link to={`/animal/${animal._id}`} className="card-link"> */}
+      <Link to={`/animalDetails/${animal._id}`} className="card-link">
       <Card>
         <Card.Img
           variant="top"
@@ -46,7 +47,7 @@ function AnimalCard({ animal }) {
           <DeleteButton animalId={animal._id} />
         </Card.Body>
       </Card>
-      {/* </Link> */}
+      </Link>
     </>
   );
 }

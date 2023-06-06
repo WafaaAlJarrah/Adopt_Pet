@@ -11,6 +11,7 @@ import NewAnimal from "./Components/NewAnimal.js";
 import AllAnimals from "./Components/AllAnimals";
 import UpdateAnimal from "./Components/UpdateAnimal";
 import AllRequests from "./Components/AllRequests";
+import AnimalDetails from "./Components/AnimalDetails";
 // import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
@@ -29,10 +30,8 @@ function App() {
           path="/updateAnimal/:animalId"
           element={<UpdateAnimal />}
         ></Route>
-        <Route
-          path="/allRequests"
-          element={<AllRequests />}
-        ></Route>
+        <Route path="/animalDetails/:animalId" element={<AnimalDetails />}></Route>
+        <Route path="/allRequests" element={<AllRequests />}></Route>
         <Route path="/newSpecification" element={<NewSpec />} />
         <Route path="/newAnimal" element={<NewAnimal />} />
         {/* <Route path="/" element={!IsSigup ? <Signup /> : <Login />}></Route> */}
