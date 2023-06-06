@@ -6,10 +6,12 @@ import AuthReduder from "./AuthReducer";
 import SpecificationReducer from "./SpecificationReducer";
 import AnimalReducer from "./AnimalReducer";
 import RequestReducer from "./RequestReducer";
+import HistoryReducer from "./HistoryReducer";
 
 export const reducers = combineReducers({
   AuthReduder,
   SpecificationReducer,
   AnimalReducer,
   RequestReducer,
+  HistoryReducer,
 });

@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { sendRequest } from "../../Redux/actions/RequestAction";
 
-function AdoptButton({ animalId }) {
+function AdoptButton({ animalId, adopted }) {
   const dispatch = useDispatch();
   //   const { user } = useSelector((state) => state.AuthReduder.authData);
   const adoptButton = () => {
@@ -22,7 +22,7 @@ function AdoptButton({ animalId }) {
       alert("Your request has been sent successfully ❤️");
     }
   };
-  return <Button onClick={adoptButton}>Adopt</Button>;
+  return <Button disabled={adopted} onClick={adoptButton}>Adopt</Button>;
 }
 
 export default AdoptButton;

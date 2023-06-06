@@ -23,11 +23,11 @@ function GridExample(param) {
     <>
       <Row>
         {loading ? (
-          <Col>Fetching Specifications...</Col>
+          <Col>Fetching Types...</Col>
         ) : (
           specifications.map((item) => (
             <Col md={4} key={item._id} className="mb-4">
-              <Link to={`/allAnimal/${item._id}`} className="card-link">
+              <Link to={`/allAnimals/${item._id}`} className="card-link">
                 <Card>
                   <Card.Img
                     variant="top"

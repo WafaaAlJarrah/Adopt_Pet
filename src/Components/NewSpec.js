@@ -1,16 +1,11 @@
 import React, { useRef, useState } from "react";
-import Button from "react-bootstrap/esm/Button";
+import Button from "react-bootstrap/Button";
 import Select from "react-select";
-import {
-  uploadImage,
-  uploadSpecification,
-} from "../Redux/actions/UploadAction";
 import { useDispatch, useSelector } from "react-redux";
+import { uploadImage, uploadSpecification } from "../Redux/actions/UploadAction";
 
 function NewSpec() {
-  const uploading = useSelector(
-    (state) => state.SpecificationReducer.uploading
-  );
+  const uploading = useSelector((state) => state.SpecificationReducer.uploading);
   const [image, setImage] = useState(null);
   const imageRef = useRef();
   const specif = useRef();
@@ -25,15 +20,11 @@ function NewSpec() {
   };
 
   const handleChange = (selectedOption) => {
-    console.log(type);
     setType(selectedOption.value);
-    console.log(type);
   };
 
-  // Reset form
   const reset = () => {
     setImage(null);
-    // setType(null); reset the selected value
     specif.current.value = "";
   };
 
@@ -50,63 +41,68 @@ function NewSpec() {
       data.append("name", fileName);
       data.append("file", image);
       newSpecification.image = fileName;
-      console.log(newSpecification);
-      try {
-        dispatch(uploadImage(data));
-      } catch (err) {
-        console.log(err);
-      }
+      dispatch(uploadImage(data));
     }
+    
     dispatch(uploadSpecification(newSpecification));
     reset();
-    //add fct to redirect to home page in admin panel
   };
+
   const options = [
     { value: "cat", label: "Cat" },
     { value: "dog", label: "Dog" },
   ];
 
   return (
-    <>
-      <Button onClick={handleSubmit} disabled={uploading}>
-        {uploading ? "uploading..." : "Share"}
-      </Button>
-      <input
-        type="text"
-        placeholder="specification name"
-        required
-        ref={specif}
-      />
-
-      <Select
-        options={options}
-        name="animalType"
-        onChange={handleChange}
-        required
-      />
-      <Button onClick={() => imageRef.current.click()}>
-        click here to add photo
-      </Button>
-      <div style={{ display: "none" }}>
-        <input type="file" ref={imageRef} onChange={onImageChange} />
-      </div>
-      {image && (
-        <div>
-          <Button variant="secondary" onClick={() => setImage(null)}>
-            clear
-          </Button>
-          <img
-            style={{
-              width: "100%",
-              maxHeight: "20rem",
-              objectFit: "cover",
-              borderRadius: "0.5rem",
-            }}
-            src={URL.createObjectURL(image)}
+    <div className="container mt-4">
+      <h2>Add New Specification</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label className="form-label">Specification Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter specification name"
+            required
+            ref={specif}
           />
         </div>
-      )}
-    </>
+
+        <div className="mb-3">
+          <label className="form-label">Animal Type:</label>
+          <Select
+            options={options}
+            name="animalType"
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <Button variant="primary" onClick={() => imageRef.current.click()}>
+            Add Photo
+          </Button>
+          <input type="file" ref={imageRef} onChange={onImageChange} style={{ display: "none" }} />
+        </div>
+
+        {image && (
+          <div className="mb-3">
+            <Button variant="secondary" onClick={() => setImage(null)}>
+              Clear
+            </Button>
+            <img
+              className="img-fluid"
+              src={URL.createObjectURL(image)}
+              alt="Selected Image"
+            />
+          </div>
+        )}
+
+        <Button type="submit" disabled={uploading}>
+          {uploading ? "Uploading..." : "Share"}
+        </Button>
+      </form>
+    </div>
   );
 }
 

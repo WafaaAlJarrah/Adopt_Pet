@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import Heart from "../Images/like.png";
 import NotLike from "../Images/notlike.png";
 import { likeAnimal } from "../Redux/api/AnimalRequest";
 import AdoptButton from "./Buttons/AdoptButton";
 import DeleteButton from "./Buttons/DeleteButton";
+import UpdateButton from "./Buttons/UpdateButton";
 function AnimalCard({ animal }) {
   //   const { user } = useSelector((state) => state.AuthReduder.authData);
   //   const [liked, setLiked] = useState(animal.likes.includes(user._id));
@@ -40,7 +41,8 @@ function AnimalCard({ animal }) {
             {likes} likes
           </span>
           <Card.Title>{animal.name}</Card.Title>
-          <AdoptButton animalId={animal._id} />
+          <AdoptButton animalId={animal._id} adopted={animal.adopted}/>
+          <UpdateButton animalId={animal._id} />
           <DeleteButton animalId={animal._id} />
         </Card.Body>
       </Card>

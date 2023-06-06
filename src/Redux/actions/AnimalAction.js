@@ -1,6 +1,6 @@
 import * as AnimalApi from "../api/AnimalRequest";
 
-//get animal by specification
+//get animals by specification
 export const getAnimals = (specificationId) => async (dispatch) => {
   dispatch({ type: "RETREIVING_ANIMALS_START" });
   try {
@@ -9,6 +9,29 @@ export const getAnimals = (specificationId) => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch({ type: "RETREIVING_ANIMALS_FAIL" });
+  }
+};
+
+//get one animal
+export const getAnimal = (animalId) => async (dispatch) => {
+  dispatch({ type: "RETREIVING_ONE_ANIMAL_START" });
+  try {
+    const { data } = await AnimalApi.getAnimal(animalId);
+    dispatch({ type: "RETREIVING_ONE_ANIMAL_SUCCESS", data: data });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "RETREIVING_ONE_ANIMAL_FAIL" });
+  }
+};
+//update one animal
+export const updateAnimal = (animalId, updatedAnimal) => async (dispatch) => {
+  dispatch({ type: "UPDATE_ANIMAL_START" });
+  try {
+    const { data } = await AnimalApi.updateAnimal(animalId, updatedAnimal);
+    dispatch({ type: "UPDATE_ANIMAL_SUCCESS", data: data });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "UPDATE_ANIMAL_FAIL" });
   }
 };
 
@@ -24,7 +47,7 @@ export const deleteAnimal = (animalId) => async (dispatch) => {
   }
 };
 
-//delete an animal
+//archive an animal
 export const archiveAnimal = (animalId) => async (dispatch) => {
   dispatch({ type: "ARCHIVE_START" });
   try {

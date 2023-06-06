@@ -14,6 +14,7 @@ function NewAnimal() {
   const color = useRef();
   const desc = useRef();
   const [image, setImage] = useState("");
+  console.log("image ", image);
   const imageRef = useRef();
   const [type, setType] = useState("");
   const [gender, setGender] = useState("");

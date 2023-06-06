@@ -1,6 +1,7 @@
 const AnimalReducer = (
   state = {
     animals: [],
+    animal: {},
     loading: false,
     error: false,
     uploading: false,
@@ -27,7 +28,7 @@ const AnimalReducer = (
         error: true,
       };
 
-    // get animal by specification --> AllAnimal.js
+    // get animals by specification --> AllAnimals.js
     case "RETREIVING_Animals_START":
       console.log("retreiving start ");
       return { ...state, loading: true, error: false };
@@ -44,6 +45,39 @@ const AnimalReducer = (
     case "RETREIVING_ANIMALS_FAIL":
       return { ...state, loading: false, error: true };
 
+    // get one animal --> updateAnimal.js
+    case "RETREIVING_ONE_ANIMAL_START":
+      console.log("retreivng start ");
+      return { ...state, loading: true, error: false };
+
+    case "RETREIVING_ONE_ANIMAL_SUCCESS":
+      console.log("animal data to update it", action.data);
+      return {
+        ...state,
+        animal: action.data,
+        loading: false,
+        error: false,
+      };
+
+    case "RETREIVING_ONE_ANIMAL_FAIL":
+      return { loading: false, error: true };
+
+      // update an animal --> updateAnimal.js
+    case "UPDATE_ANIMAL_START":
+      console.log("retreivng start ");
+      return { ...state, loading: true, error: false };
+
+    case "UPDATE_ANIMAL_SUCCESS":
+      console.log("updated data ", action.data);
+      return {
+        ...state,
+        animal: action.data,
+        loading: false,
+        error: false,
+      };
+
+    case "UPDATE_ANIMAL_FAIL":
+      return { loading: false, error: true };
     // delete an animal --> deleteButton.js
     case "DELETE_ANIMAL_START":
       console.log("deleting start ");

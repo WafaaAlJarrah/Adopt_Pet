@@ -9,6 +9,8 @@ import { useState } from "react";
 import NewSpec from "./Components/NewSpec";
 import NewAnimal from "./Components/NewAnimal.js";
 import AllAnimals from "./Components/AllAnimals";
+import UpdateAnimal from "./Components/UpdateAnimal";
+import AllRequests from "./Components/AllRequests";
 // import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
@@ -20,8 +22,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
-          path="/allAnimal/:specificationId"
+          path="/allAnimals/:specificationId"
           element={<AllAnimals />}
+        ></Route>
+        <Route
+          path="/updateAnimal/:animalId"
+          element={<UpdateAnimal />}
+        ></Route>
+        <Route
+          path="/allRequests"
+          element={<AllRequests />}
         ></Route>
         <Route path="/newSpecification" element={<NewSpec />} />
         <Route path="/newAnimal" element={<NewAnimal />} />
