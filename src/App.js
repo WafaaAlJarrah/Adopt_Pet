@@ -35,6 +35,7 @@ function App() {
         <Route path="/newSpecification" element={<NewSpec />} />
         <Route path="/newAnimal" element={<NewAnimal />} />
         {/* <Route path="/" element={!IsSigup ? <Signup /> : <Login />}></Route> */}
+        <Route path="/Contact" element={<Contact />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/SignUp" element={<Signup />}></Route>
       </Routes>
