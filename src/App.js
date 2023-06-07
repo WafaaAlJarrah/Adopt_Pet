@@ -7,7 +7,7 @@ import Login from "./Components/Login/Login.js";
 import Signup from "./Components/SignUp/Signup.js";
 import { useState } from "react";
 import NewSpec from "./Components/NewSpec";
-import NewAnimal from "./Components/NewAnimal.js";
+import NewAnimal from "./Components/newAnimal.js";
 import AllAnimals from "./Components/AllAnimals";
 import UpdateAnimal from "./Components/UpdateAnimal";
 import AllRequests from "./Components/AllRequests";
