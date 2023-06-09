@@ -3,6 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAnimals } from "../Redux/actions/AnimalAction";
+import Filter from "./Filter";
 import AnimalCard from "./AnimalCard";
 function AllAnimals() {
   const { specificationId } = useParams();
@@ -21,17 +22,22 @@ function AllAnimals() {
     return <div>No Animals!!</div>;
   }
   return (
-    <Row>
-      {loading ? (
-        <Col>Fetching animals...</Col>
-      ) : (
-        nonArchivedAnimals.map((animal, id) => (
-          <Col md={4} key={animal._id} className="mb-4">
-            <AnimalCard animal={animal} key={id} />
-          </Col>
-        ))
-      )}
-    </Row>
+    <div>
+      <div>
+        <Filter />
+      </div>
+      <Row>
+        {loading ? (
+          <Col>Fetching animals...</Col>
+        ) : (
+          nonArchivedAnimals.map((animal, id) => (
+            <Col md={4} key={animal._id} className="mb-4">
+              <AnimalCard animal={animal} key={id} />
+            </Col>
+          ))
+        )}
+      </Row>
+    </div>
   );
 }
 

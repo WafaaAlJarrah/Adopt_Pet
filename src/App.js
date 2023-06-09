@@ -6,7 +6,7 @@ import Contact from "./Components/Contact";
 import Login from "./Components/Login/Login.js";
 import Signup from "./Components/SignUp/Signup.js";
 import NewSpec from "./Components/NewSpec";
-import NewAnimal from "./Components/NewAnimal";
+import NewAnimal from "./Components/newAnimal";
 import AllAnimals from "./Components/AllAnimals";
 import UpdateAnimal from "./Components/UpdateAnimal";
 import AllRequests from "./Components/AllRequests";
