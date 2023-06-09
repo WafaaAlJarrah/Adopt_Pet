@@ -15,6 +15,10 @@ function AllRequests() {
   const nonArchivedRequests = requests?.filter((request) => !request.archived);
   console.log("all requests non archived ", nonArchivedRequests);
 
+  if (nonArchivedRequests.length === 0) {
+    return <div>No Requests!!</div>;
+  }
+
   return (
     <div>
       {loading ? (

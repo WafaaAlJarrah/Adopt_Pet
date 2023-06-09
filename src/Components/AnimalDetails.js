@@ -12,22 +12,24 @@ function AnimalDetails() {
   const animalId = param.animalId;
   console.log(animalId);
   const { animal } = useSelector((state) => state.AnimalReducer);
-  console.log("animal before dispatch", animal);
+  console.log("animal details", animal);
 
   useEffect(() => {
     dispatch(getAnimal(animalId));
   }, [dispatch, animalId]);
+
 
   return !animal ? (
     <div>Loading...</div>
   ) : (
     <div>
       <h2>{animal.name}</h2>
-      <img src={
-            animal.image
-              ? process.env.REACT_APP_PUBLIC_FOLDER + animal.image
-              : ""
-          } alt={animal.name} />
+      <img
+        src={
+          animal.image ? process.env.REACT_APP_PUBLIC_FOLDER + animal.image : ""
+        }
+        alt={animal.name}
+      />
 
       <div>
         <h3>Type: {animal.type}</h3>
@@ -41,9 +43,9 @@ function AnimalDetails() {
         <p>Likes: {animal.likes.length}</p>
       </div>
       <div>
-        <AdoptButton animalId={animal._id} adopted={animal.adopted}/>
-        <UpdateButton animalId={animal._id}/>
-        <DeleteButton animalId={animal._id}/>
+        <AdoptButton animalId={animal._id} adopted={animal.adopted} />
+        <UpdateButton animalId={animal._id} />
+        <DeleteButton animalId={animal._id} />
       </div>
     </div>
   );

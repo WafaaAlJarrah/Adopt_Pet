@@ -17,8 +17,9 @@ function GridExample(param) {
   }, [dispatch, param.type]);
 
   console.log(specifications);
-  // console.log(specifications[0].image);
-  // console.log(process.env.REACT_APP_PUBLIC_FOLDER);
+  if (specifications.length === 0) {
+    return <div>No Specifications!!</div>;
+  }
   return (
     <>
       <Row>

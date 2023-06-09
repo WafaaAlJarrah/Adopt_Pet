@@ -21,16 +21,17 @@ function AnimalCard({ animal }) {
   };
   return (
     <>
-      <Link to={`/animalDetails/${animal._id}`} className="card-link">
       <Card>
-        <Card.Img
-          variant="top"
-          src={
-            animal.image
-              ? process.env.REACT_APP_PUBLIC_FOLDER + animal.image
-              : ""
-          }
-        />
+        <Link to={`/animalDetails/${animal._id}`} className="card-link">
+          <Card.Img
+            variant="top"
+            src={
+              animal.image
+                ? process.env.REACT_APP_PUBLIC_FOLDER + animal.image
+                : ""
+            }
+          />
+        </Link>
         <Card.Body>
           <img
             src={liked ? Heart : NotLike}
@@ -42,12 +43,11 @@ function AnimalCard({ animal }) {
             {likes} likes
           </span>
           <Card.Title>{animal.name}</Card.Title>
-          <AdoptButton animalId={animal._id} adopted={animal.adopted}/>
+          <AdoptButton animalId={animal._id} adopted={animal.adopted} />
           <UpdateButton animalId={animal._id} />
           <DeleteButton animalId={animal._id} />
         </Card.Body>
       </Card>
-      </Link>
     </>
   );
 }

@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Card } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getAnimals } from "../Redux/actions/AnimalAction";
 import AnimalCard from "./AnimalCard";
 function AllAnimals() {
-  const [refreshKey, setRefreshKey] = useState(0); // State to trigger refresh
-  const location = useLocation();
-
-  const refreshPage = () => {
-    // Increment the refreshKey to trigger a refresh
-    setRefreshKey((prevKey) => prevKey + 1);
-  };
-
-  useEffect(() => {
-    // Check if the refreshKey query parameter is present and refresh the page
-    const queryParams = new URLSearchParams(location.search);
-    if (queryParams.get("refreshKey")) {
-      refreshPage();
-    }
-  }, [location.search]);
-
   const { specificationId } = useParams();
   //   console.log("specificationId: ", specificationId);
   const dispatch = useDispatch();
@@ -32,6 +16,10 @@ function AllAnimals() {
   const nonArchivedAnimals = animals.filter((animal) => !animal.archived);
 
   console.log("all animals", nonArchivedAnimals);
+
+  if (nonArchivedAnimals.length === 0) {
+    return <div>No Animals!!</div>;
+  }
   return (
     <Row>
       {loading ? (

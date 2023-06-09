@@ -12,13 +12,12 @@ function UpdateAnimal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { animal } = useSelector((state) => state.AnimalReducer);
-  //   console.log("animal before dispatch", animal);
+  //   console.log("animal data", animal);
 
   useEffect(() => {
     dispatch(getAnimal(animalId));
   }, [dispatch, animalId]);
 
-  //   console.log("animal after dispatch", animal);
   const [image, setImage] = useState(null);
   console.log("image ", image);
   const [formData, setFormData] = useState({
@@ -38,8 +37,7 @@ function UpdateAnimal() {
   const [selectedSpecification, setSelectedSpecification] = useState(
     formData.specification
   );
-  console.log("after ", selectedSpecification);
-  console.log("form ", formData);
+  console.log("form data", formData);
   const [selectedType, setSelectedType] = useState(formData.type);
 
   const handleChange = (e) => {
@@ -47,18 +45,13 @@ function UpdateAnimal() {
   };
 
   const handleSpecificationChange = (event) => {
-    console.log("1- selected specifiction ", event.target.value);
     setSelectedSpecification(event.target.value);
-
     const newSpec = event.target.value;
-    console.log("2- selected specifiction ", newSpec);
     setSelectedSpecification(newSpec);
-    console.log("3- selected specifiction after ", newSpec);
     setFormData((prevFormData) => ({
       ...prevFormData,
       specification: newSpec,
     }));
-    console.log("before ", selectedSpecification);
   };
 
   const handleTypeChange = (event) => {
@@ -90,9 +83,7 @@ function UpdateAnimal() {
       const fileName = Date.now() + image.name;
       data.append("name", fileName);
       data.append("file", image);
-      console.log("my filename ", fileName);
       formData.image = fileName;
-      console.log("form after add image", formData);
       try {
         dispatch(uploadImage(data));
       } catch (err) {

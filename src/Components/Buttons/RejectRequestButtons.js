@@ -12,8 +12,7 @@ function RejectRequestButtons({ requestId, animalId }) {
 
   const handleReject = async () => {
     await dispatch(archiveRequest(requestId));
-    await dispatch(uploadHistory(requestId, { status: "rejected" }));
-    //await dispatch(updateAnimal(animalId, { adopted: false }));
+    await dispatch(uploadHistory(requestId, "rejected"));
     navigate("/allRequests");
   };
   return (

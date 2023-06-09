@@ -12,7 +12,7 @@ function AcceptRequestButton({ requestId, animalId }) {
 
   const handleAccept = async () => {
     await dispatch(archiveRequest(requestId));
-    await dispatch(uploadHistory(requestId, { status: "accepted" }));
+    await dispatch(uploadHistory(requestId,  "accepted" ));
     await dispatch(updateAnimal(animalId, { adopted: true }));
     navigate("/allRequests");
   };
