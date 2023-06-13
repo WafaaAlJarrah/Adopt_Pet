@@ -22,11 +22,29 @@ function AllAnimals() {
     return <div>No Animals!!</div>;
   }
   return (
-    <div>
+    <div style={{display:"flex"}}>
       <div>
         <Filter />
       </div>
       <Row>
+        {loading ? (
+          <Col>Fetching animals...</Col>
+        ) : (
+          nonArchivedAnimals.map((animal, id) => (
+            <Col md={4} key={animal._id} className="mb-4">
+              <AnimalCard animal={animal} key={id} />
+            </Col>
+          ))
+        )}
+        {loading ? (
+          <Col>Fetching animals...</Col>
+        ) : (
+          nonArchivedAnimals.map((animal, id) => (
+            <Col md={4} key={animal._id} className="mb-4">
+              <AnimalCard animal={animal} key={id} />
+            </Col>
+          ))
+        )}
         {loading ? (
           <Col>Fetching animals...</Col>
         ) : (

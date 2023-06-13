@@ -20,7 +20,7 @@ function DeleteButton({ animalId }) {
         });
     }
   };
-  return <Button onClick={deleteButton}>Delete</Button>;
+  return <Button variant="outline-primary" onClick={deleteButton}>Delete</Button>;
 }
 
 export default DeleteButton;

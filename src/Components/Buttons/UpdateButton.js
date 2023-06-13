@@ -8,7 +8,7 @@ function UpdateButton({ animalId }) {
     navigate(`/updateAnimal/${animalId}`);
   };
 
-  return <Button onClick={handleUpdate}>Update</Button>;
+  return <Button variant="outline-primary" className="Button" onClick={handleUpdate}>Update</Button>;
 }
 
 export default UpdateButton;

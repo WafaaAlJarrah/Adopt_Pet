@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 
 export default function SelectSmall() {
     // const [age, setAge] = React.useState('');
@@ -13,6 +14,7 @@ export default function SelectSmall() {
 
     return (
         <div className='Filtering'>
+            <h1> Filter By </h1>
             <FormControl sx={{ m: 1, minWidth: 150 }} >
                 <InputLabel id="demo-simple-select-autowidth-label">Type</InputLabel>
                 <Select
@@ -147,8 +149,10 @@ export default function SelectSmall() {
                     <MenuItem value={10}>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>
                     <MenuItem value={30}>Thirty</MenuItem>
-                </Select><br></br>
-                <button> Search </button>
+                </Select>
+                <div style={{marginTop: 10}}>
+                <Button variant="outlined"> Search </Button>
+                </div>
             </FormControl>
         </div>
 

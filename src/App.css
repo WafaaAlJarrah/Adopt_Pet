@@ -93,11 +93,15 @@ color: #02daff
   text-align: center;
 }
 .Filtering {
-  width: 300px;
+  width: 200px;
   text-align: left;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin-left: 30px;
+  margin-top: 20px;
+  position: sticky;
 }
 .FormControl{
   color: black;
+}
+.Button{
+  margin-right: 10px;
 }

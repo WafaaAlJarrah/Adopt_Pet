@@ -22,7 +22,7 @@ function AdoptButton({ animalId, adopted }) {
       alert("Your request has been sent successfully ❤️");
     }
   };
-  return <Button disabled={adopted} onClick={adoptButton}>Adopt</Button>;
+  return <Button variant="outline-primary" className="Button" disabled={adopted} onClick={adoptButton}>Adopt</Button>;
 }
 
 export default AdoptButton;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
+import CardGroup from 'react-bootstrap/CardGroup';
 import Heart from "../Images/like.png";
 import NotLike from "../Images/notlike.png";
 import { likeAnimal } from "../Redux/api/AnimalRequest";
@@ -21,7 +22,8 @@ function AnimalCard({ animal }) {
   };
   return (
     <>
-      <Card>
+
+      <Card style={{marginTop: 30}}>
         <Link to={`/animalDetails/${animal._id}`} className="card-link">
           <Card.Img
             variant="top"
@@ -33,21 +35,27 @@ function AnimalCard({ animal }) {
           />
         </Link>
         <Card.Body>
-          <img
-            src={liked ? Heart : NotLike}
-            alt=""
-            style={{ cursor: "pointer" }}
-            onClick={handleLike}
-          />
-          <span style={{ color: "var(--gray)", fontSize: "12px" }}>
-            {likes} likes
-          </span>
-          <Card.Title>{animal.name}</Card.Title>
+          <Card.Title style={{ fontSize: "30px", fontFamily: "sans-serif" }}>{animal.name}</Card.Title>
+          <Card.Body>
+            <img
+              src={liked ? Heart : NotLike}
+              alt=""
+              style={{ cursor: "pointer" }}
+              width={20}
+              onClick={handleLike}
+            />
+            <span style={{ color: "var(--gray)", fontSize: "18px", marginLeft: "10px" }}>
+              {likes} Likes
+            </span><br></br>
+          </Card.Body>
+
+          
           <AdoptButton animalId={animal._id} adopted={animal.adopted} />
           <UpdateButton animalId={animal._id} />
           <DeleteButton animalId={animal._id} />
         </Card.Body>
       </Card>
+
     </>
   );
 }
