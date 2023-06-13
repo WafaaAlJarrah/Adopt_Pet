@@ -92,3 +92,12 @@ color: #02daff
 .TitleCard {
   text-align: center;
 }
+.Filtering {
+  width: 300px;
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.FormControl{
+  color: black;
+}
