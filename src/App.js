@@ -11,6 +11,7 @@ import AllAnimals from "./Components/AllAnimals";
 import UpdateAnimal from "./Components/UpdateAnimal";
 import AllRequests from "./Components/AllRequests";
 import AnimalDetails from "./Components/AnimalDetails";
+import AllHistories from "./Components/AllHistories";
 // import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           element={<AnimalDetails />}
         ></Route>
         <Route path="/allRequests" element={<AllRequests />}></Route>
+        <Route path="/allHistories" element={<AllHistories />}></Route>
         <Route path="/newSpecification" element={<NewSpec />} />
         <Route path="/newAnimal" element={<NewAnimal />} />
         {/* <Route path="/" element={!IsSigup ? <Signup /> : <Login />}></Route> */}
