@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import Contact from "./Components/Contact";
@@ -11,14 +11,18 @@ import AllAnimals from "./Components/AllAnimals";
 import UpdateAnimal from "./Components/UpdateAnimal";
 import AllRequests from "./Components/AllRequests";
 import AnimalDetails from "./Components/AnimalDetails";
+import AllHistories from "./Components/AllHistories";
 // import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
+  const location = useLocation();
+  const isSignPage = location.pathname === "/SignUp" || "/Login";
+
   // const user = useSelector((state) => state.authReducer.authData);
   // const [IsSigup, setIsSigup] = useState(false);
   return (
     <div className="App">
-      <Navbar />
+      {!isSignPage && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
@@ -29,8 +33,12 @@ function App() {
           path="/updateAnimal/:animalId"
           element={<UpdateAnimal />}
         ></Route>
-        <Route path="/animalDetails/:animalId" element={<AnimalDetails />}></Route>
+        <Route
+          path="/animalDetails/:animalId"
+          element={<AnimalDetails />}
+        ></Route>
         <Route path="/allRequests" element={<AllRequests />}></Route>
+        <Route path="/allHistories" element={<AllHistories />}></Route>
         <Route path="/newSpecification" element={<NewSpec />} />
         <Route path="/newAnimal" element={<NewAnimal />} />
         {/* <Route path="/" element={!IsSigup ? <Signup /> : <Login />}></Route> */}

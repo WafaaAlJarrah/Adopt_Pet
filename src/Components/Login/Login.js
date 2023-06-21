@@ -1,33 +1,48 @@
 import "./Login.css";
 import Logo from "../../Images/logo.png";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logIn } from "../../Redux/actions/AuthAction";
 export default function Login() {
   const dispatch = useDispatch();
+  const errorMessage = useSelector((state) => state.AuthReduder.errorMessage);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  
+  const [error, setError] = useState("");
+
   // console.log(formData)
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  // function handleChange(event) {
-  //   const { name, value, type, checked } = event.target;
-  //   setFormData((prevFormData) => ({
-  //     ...prevFormData,
-  //     [name]: type === "checkbox" ? checked : value,
-  //   }));
-  // }
+  useEffect(() => {
+    setError("");
+  }, []);
+  useEffect(() => {
+    return () => {
+      dispatch({ type: "CLEAR_ERROR_MESSAGE" }); // Clear the error message when the component unmounts
+    };
+  }, [dispatch]);
 
-  function handleSubmit(event) {
+  useEffect(() => {
+    setError(errorMessage);
+  }, [errorMessage]);
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(logIn(formData));
-  }
+    if (!formData.email || !formData.password) {
+      setError("All fields are required");
+    } else {
+      // setislogin(true);
+      setError("");
+
+      dispatch(logIn(formData));
+      console.log(errorMessage);
+    }
+  };
 
   return (
     <div className="form--container">
@@ -52,6 +67,8 @@ export default function Login() {
           onChange={handleChange}
           value={formData.password}
         />
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <button className="form--submit"> Login </button>
         <div className="row" style={{ marginBottom: "5px" }}>
           <span
             style={{
@@ -67,7 +84,6 @@ export default function Login() {
             Sign Up
           </Link>
         </div>
-        <button className="form--submit"> Login </button>
       </form>
     </div>
   );

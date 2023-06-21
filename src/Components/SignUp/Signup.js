@@ -1,11 +1,27 @@
 import "./Signup.css";
 import Logo from "../../Images/logo.png";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUp } from "../../Redux/actions/AuthAction";
 export default function Signup() {
-  // const [errorMessage, setErrorMessage] = useState('');
+  const dispatch = useDispatch();
+  const errorMessage = useSelector((state) => state.AuthReduder.errorMessage);
+  const [errorMsg, setErrorMsg] = useState("");
+  useEffect(() => {
+    setErrorMsg(""); // Set the error state to an empty string when the component is first rendered
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      dispatch({ type: "CLEAR_ERROR_MESSAGE" });
+    };
+  }, [dispatch]);
+
+  useEffect(() => {
+    setErrorMsg(errorMessage);
+  }, [errorMessage]);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -15,33 +31,46 @@ export default function Signup() {
   });
 
   const [confirmPass, setConfirmPass] = useState(true);
-  const dispatch = useDispatch();
   // console.log(formData);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  //   function handleChange(event) {
-  //     const { name, value, type, checked } = event.target;
-  //     setFormData((prevFormData) => ({
-  //       ...prevFormData,
-  //       [name]: type === "checkbox" ? checked : value,
-  //     }));
-  //   }
 
-  function handleSubmit(event) {
+  const phoneRegex = /^([0-9]{2})[- .]?([0-9]{6})$/;
+  const emailRegex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    formData.password === formData.confirmPassword
-      ? dispatch(signUp(formData))
-      : setConfirmPass(false);
-    // if (formData.password !== formData.confirmPassword) {
-    //   setConfirmPass(false);
-    //   console.log("Password Doesn't Match");
-    // } else {
-    //   console.log("Successfully Signed up");
-    //   return;
-    // }
-  }
+    if (
+      !formData.fullName ||
+      !formData.email ||
+      !formData.password ||
+      !formData.phoneNB
+    ) {
+      setErrorMsg("All fields are required");
+    } else if (!emailRegex.test(formData.email)) {
+      setErrorMsg("Invalid email address");
+    } else if (formData.password.length < 8) {
+      setErrorMsg("Password must be at least 8 characters");
+    } else if (!phoneRegex.test(formData.phoneNB)) {
+      setErrorMsg("Invalid Phone number ");
+    } else if (formData.password !== formData.confirmPassword) {
+      setConfirmPass(false);
+      setErrorMsg("Confirm Password is not same ");
+    } else {
+      setErrorMsg(" ");
+
+      // setislogin(true);
+
+      dispatch(signUp(formData));
+      console.log(errorMsg);
+    }
+    // formData.password === formData.confirmPassword
+    //   ? dispatch(signUp(formData))
+    //   : setConfirmPass(false);
+  };
 
   return (
     <div className="form-container">
@@ -94,6 +123,11 @@ export default function Signup() {
           onChange={handleChange}
           value={formData.phoneNB}
         />
+        {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
+        <button className="form--submit" type="submit">
+          Sign up
+        </button>
+
         <div className="row" style={{ marginBottom: "5px" }}>
           <span
             style={{
@@ -109,9 +143,6 @@ export default function Signup() {
             Login
           </Link>
         </div>
-        <button className="form--submit" type="submit">
-          Sign up
-        </button>
       </form>
     </div>
   );
