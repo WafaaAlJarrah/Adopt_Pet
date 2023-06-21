@@ -22,7 +22,7 @@ function App() {
   // const [IsSigup, setIsSigup] = useState(false);
   return (
     <div className="App">
-      {!isSignPage && <Navbar />}
+     <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
