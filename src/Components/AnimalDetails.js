@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAnimal } from "../Redux/actions/AnimalAction";
 import { useDispatch, useSelector } from "react-redux";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import UpdateButton from "./Buttons/UpdateButton";
 import DeleteButton from "./Buttons/DeleteButton";
 import AdoptButton from "./Buttons/AdoptButton";
+import Filter from './Filter';
 
 function AnimalDetails() {
   const dispatch = useDispatch();
@@ -20,34 +23,42 @@ function AnimalDetails() {
 
 
   return !animal ? (
+
     <div>Loading...</div>
   ) : (
-    <div>
-      <h2>{animal.name}</h2>
-      <img
-        src={
+    <div style={{ display: "flex" }}>
+      <div>
+        <Filter />
+      </div>
+      <Card >
+        <Card.Title>{animal.name}</Card.Title>
+        <Card.Img variant="top" src={
           animal.image ? process.env.REACT_APP_PUBLIC_FOLDER + animal.image : ""
         }
-        alt={animal.name}
-      />
-
-      <div>
-        <h3>Type: {animal.type}</h3>
-        <p>Specification: {animal.specification.name}</p>
-        <p>Age: {animal.age}</p>
-        <p>Gender: {animal.gender}</p>
-        <p>Color: {animal.color}</p>
-        <p>Location: {animal.location}</p>
-        <p>Description: {animal.description}</p>
-        <p>Budget: {animal.budget} %</p>
-        <p>Likes: {animal.likes.length}</p>
-      </div>
-      <div>
-        <AdoptButton animalId={animal._id} adopted={animal.adopted} />
-        <UpdateButton animalId={animal._id} />
-        <DeleteButton animalId={animal._id} />
-      </div>
+          alt={animal.name} />
+        <Card.Body>
+          <Card.Title>Card Title</Card.Title>
+          <Card.Text>
+            <h3>Type: {animal.type}</h3>
+            <h5>Specification: {animal.specification.name}</h5>
+            <h5>Age: {animal.age}</h5>
+            <h5>Gender: {animal.gender}</h5>
+            <h5>Color: {animal.color}</h5>
+            <h5>Location: {animal.location}</h5>
+            <h5>Description: {animal.description}</h5>
+            <h5>Budget: {animal.budget} %</h5>
+            <h5>Likes: {animal.likes.length}</h5>
+          </Card.Text>
+          <AdoptButton animalId={animal._id} adopted={animal.adopted} />
+          <UpdateButton animalId={animal._id} />
+          <DeleteButton animalId={animal._id} />
+        </Card.Body>
+      </Card>
     </div>
+
+
+
+
   );
 }
 
