@@ -17,6 +17,7 @@ function CollapsibleExample() {
                     <Nav className="me-auto">
                         <Nav.Link href="/" style={{ color: "#fff", fontSize: "20px", paddingRight: "40px" }}> Home </Nav.Link>
                         <Nav.Link href="#about" style={{ color: "#fff", fontSize: "20px", paddingRight: "40px" }}> About </Nav.Link>
+                        <Nav.Link href="/Profile" style={{ color: "#fff", fontSize: "20px", paddingRight: "40px" }}> Profile </Nav.Link>
                         <Nav.Link href="/Contact" style={{ color: "#fff", fontSize: "20px", paddingRight: "40px" }}> Contact </Nav.Link>
                         <NavDropdown title="Account" id="collasible-nav-dropdown" style={{ color: "#fff", fontSize: "20px" }}>
                             <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>

@@ -12,6 +12,7 @@ import UpdateAnimal from "./Components/UpdateAnimal";
 import AllRequests from "./Components/AllRequests";
 import AnimalDetails from "./Components/AnimalDetails";
 import AllHistories from "./Components/AllHistories";
+import Profile from './Components/Profile';
 // import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
      <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         <Route
           path="/allAnimals/:specificationId"
           element={<AllAnimals />}
