@@ -4,7 +4,7 @@ import AcceptRequestButton from "./Buttons/AcceptRequestButton";
 import RejectRequestButtons from "./Buttons/RejectRequestButtons";
 
 function RequestCard({ request }) {
-  console.log("request ", request);
+  // console.log("request ", request);
   const { message, sender, animal } = request;
   const requestId = request._id;
   const animalId = request.animal._id;

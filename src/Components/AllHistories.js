@@ -15,12 +15,17 @@ function AllHistories() {
   if (histories.length === 0) {
     return <div>No histories!!</div>;
   }
+
+  // Sort histories by date from newer to older
+  const sortedHistories = histories.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
   return (
     <div>
       {loading ? (
         <Col>Fetching histories...</Col>
-      ) : histories ? (
-        histories.map((history) => (
+      ) : sortedHistories ? (
+        sortedHistories.map((history) => (
           <HistoryCard key={history._id} history={history} />
         ))
       ) : (

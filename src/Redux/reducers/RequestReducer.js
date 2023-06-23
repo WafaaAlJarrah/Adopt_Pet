@@ -35,7 +35,7 @@ const RequestReducer = (
       return { ...state, loading: true, error: false };
 
     case "RETREIVING_REQUESTS_SUCCESS":
-      console.log("retreiving data ", action.data);
+      // console.log("retreiving data ", action.data);
       return {
         ...state,
         requests: action.data,

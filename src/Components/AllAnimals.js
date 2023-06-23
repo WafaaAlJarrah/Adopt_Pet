@@ -16,13 +16,17 @@ function AllAnimals() {
 
   const nonArchivedAnimals = animals.filter((animal) => !animal.archived);
 
-  console.log("all animals", nonArchivedAnimals);
-
   if (nonArchivedAnimals.length === 0) {
     return <div>No Animals!!</div>;
   }
+  // Sort animals by date from newer to older
+  const sortedAnimals = nonArchivedAnimals.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+  console.log("all animals", sortedAnimals);
+
   return (
-    <div style={{display:"flex"}}>
+    <div style={{ display: "flex" }}>
       <div>
         <Filter />
       </div>
@@ -30,25 +34,7 @@ function AllAnimals() {
         {loading ? (
           <Col>Fetching animals...</Col>
         ) : (
-          nonArchivedAnimals.map((animal, id) => (
-            <Col md={4} key={animal._id} className="mb-4">
-              <AnimalCard animal={animal} key={id} />
-            </Col>
-          ))
-        )}
-        {loading ? (
-          <Col>Fetching animals...</Col>
-        ) : (
-          nonArchivedAnimals.map((animal, id) => (
-            <Col md={4} key={animal._id} className="mb-4">
-              <AnimalCard animal={animal} key={id} />
-            </Col>
-          ))
-        )}
-        {loading ? (
-          <Col>Fetching animals...</Col>
-        ) : (
-          nonArchivedAnimals.map((animal, id) => (
+          sortedAnimals.map((animal, id) => (
             <Col md={4} key={animal._id} className="mb-4">
               <AnimalCard animal={animal} key={id} />
             </Col>
