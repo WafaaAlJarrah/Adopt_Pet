@@ -20,8 +20,9 @@ function CollapsibleExample() {
                         <Nav.Link href="/Profile" style={{ color: "#fff", fontSize: "20px", paddingRight: "40px" }}> Profile </Nav.Link>
                         <Nav.Link href="/Contact" style={{ color: "#fff", fontSize: "20px", paddingRight: "40px" }}> Contact </Nav.Link>
                         <NavDropdown title="Account" id="collasible-nav-dropdown" style={{ color: "#fff", fontSize: "20px" }}>
-                            <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2"> Sign Up </NavDropdown.Item>
+                            <NavDropdown.Item href="/Login">Login</NavDropdown.Item>
+                            <NavDropdown.Item href="/SignUp"> Sign Up </NavDropdown.Item>
+                            <NavDropdown.Item href="/Admin"> Admin </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Form className="d-flex">

@@ -13,6 +13,7 @@ import AllRequests from "./Components/AllRequests";
 import AnimalDetails from "./Components/AnimalDetails";
 import AllHistories from "./Components/AllHistories";
 import Profile from './Components/Profile';
+import Admin from "./Components/Admin/Admin";
 // import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
@@ -23,9 +24,10 @@ function App() {
   // const [IsSigup, setIsSigup] = useState(false);
   return (
     <div className="App">
-     <Navbar />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/Admin" element={<Admin />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route
           path="/allAnimals/:specificationId"
