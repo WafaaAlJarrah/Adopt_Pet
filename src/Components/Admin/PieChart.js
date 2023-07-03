@@ -33,7 +33,7 @@ const renderActiveShape = (props) => {
         outerRadius={outerRadius}
         startAngle={startAngle}
         endAngle={endAngle}
-        fill={"#fff"}
+        fill={"#333"}
       />
       <Sector
         cx={cx}
@@ -44,10 +44,10 @@ const renderActiveShape = (props) => {
         outerRadius={outerRadius + 10}
         fill={fill}
       />
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="#333" />
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#fff">{`PV ${value}`}</text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#fff">
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#333">
         {`(Rate ${(percent * 100).toFixed(2)}%)`}
       </text>
     </g>
@@ -69,7 +69,7 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-        <PieChart width={400} height={325} style={{backgroundColor: "#333", borderRadius: "8px"}}>
+        <PieChart width={415} height={325} style={{ borderRadius: "8px"}}>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}

@@ -11,6 +11,14 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import Avatar from '@mui/material/Avatar';
+import Logo from '../../Images/logo.png';
+import Elie from '../../Images/Elie.jpg';
+import Hiba from '../../Images/Hiba.png';
+import Hani from '../../Images/Fayad.png';
+import Majed from '../../Images/2.jpg';
+import { green } from '@mui/material/colors';
+import Icon from '@mui/material/Icon';
 
 
 function createData(name, calories, fat, carbs, protein, price) {
@@ -41,7 +49,7 @@ function Row(props) {
     const [open, setOpen] = React.useState(false);
 
     return (
-        <React.Fragment>
+        <React.Fragment style={{textAlign: "left"}}>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell>
                     <IconButton
@@ -49,7 +57,7 @@ function Row(props) {
                         size="small"
                         onClick={() => setOpen(!open)}
                     >
-                        {open ? <i class="fa-regular fa-circle-up"></i> : <i class="fa-regular fa-circle-down"></i>}
+                        {open ? <Icon baseClassName="material-icons-two-tone">add_circle</Icon>: <Icon baseClassName="material-icons-two-tone">add_circle</Icon>}
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
@@ -118,24 +126,24 @@ Row.propTypes = {
 };
 
 const rows = [
-    createData('Wafaa Jarrah', 6, 7, 4, 'Pending'),
-    createData('Elie Kfoury', 9, 5, 4, 'Pending'),
-    createData('Juliana Chami', 3, 4, 6, 'Approved'),
-    createData('Hani Malas', 4, 4, 4, 'Rejected'),
-    createData('Majed Sbat', 2, 8, 4, 'Approved'),
+    createData(<Avatar src={Logo} />,'Wafaa Jarrah','Tripoli', 6,'Pending'),
+    createData(<Avatar src={Elie} />,'Elie Kfoury','Koura', 9,'Pending'),
+    createData(<Avatar src={Hiba} />,'Juliana Chami','Bsharre', 3, 'Approved'),
+    createData(<Avatar src={Hani} />,'Hani Malas', 'Akkar',4, 'Rejected'),
+    createData(<Avatar src={Majed} />,'Majed Sbat','Beirut', 2, 'Approved'),
 ];
 
 export default function CollapsibleTable() {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} >
             <Table aria-label="collapsible table">
                 <TableHead>
                     <TableRow>
                         <TableCell />
-                        <TableCell><b>User's Name</b></TableCell>
-                        <TableCell align="right"><b>Interaction</b></TableCell>
-                        <TableCell align="right"><b>Dogs</b></TableCell>
-                        <TableCell align="right"><b>Cats</b></TableCell>
+                        <TableCell><b>User</b></TableCell>
+                        <TableCell align="right"><b>Name</b></TableCell>
+                        <TableCell align="right"><b> Location </b></TableCell>
+                        <TableCell align="right"><b>Animals </b></TableCell>
                         <TableCell align="right"><b>Status</b></TableCell>
                     </TableRow>
                 </TableHead>

@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import PieChart from "./PieChart";
 import Users from "./Users";
+import Angora from '../../Images/Angora.png';
+import Husky from '../../Images/Husky.png';
+import Golden from '../../Images/Golden.png';
+import Ango from '../../Images/Angora.png';
+import Child from '../../Images/childdog.png';
+import Girl from '../../Images/girldog.png';
+import Thanks from '../../Images/thanks.png';
 
 const Dashboard = () => {
 
@@ -81,22 +88,17 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-
-            <hr />
-
-
-            <div class="row ">
-                <div class="col-lg-7 col-md-6 col-sm-12">
+            {/* <div class="row "> */}
+                <div >
                     <Users />
-                </div>
-                <div className="col-lg-5 col-md-6 col-sm-12 col-sm-offset-5">
-                    
-                    <PieChart /> </div>
-            </div><br></br>
+                </div><br></br>
+                {/* <div className="col-lg-5 col-md-6 col-sm-12 col-sm-offset-5">
+                    <PieChart /> </div> */}
+            {/* </div><br></br> */}
 
             <div class="card-columns mb-3">
                 <div class="card">
-                    <img class="card-img-top img-fluid" src="//placehold.it/600x200/444/fff?text=..." alt="Card image cap" />
+                    <img class="card-img-top img-fluid" src={Ango} alt="Card image cap" />
                     <div class="card-body">
                         <h4 class="card-title">Elie requested Angora</h4>
                         <p class="card-text"> I wanted to bring to your attention that there is a user requesting an Angora cat. Kindly review their request and provide appropriate guidance or assistance. Thank you for your attention to this matter</p>
@@ -113,7 +115,7 @@ const Dashboard = () => {
                     </blockquote>
                 </div>
                 <div class="card">
-                    <img class="card-img-top img-fluid" src="//placehold.it/600x200/bbb/fff?text=..." alt="Card image cap" />
+                    <img class="card-img-top img-fluid" src={Husky} alt="Card image cap" />
                     <div class="card-body">
                         <h4 class="card-title">Wafaa requested Husky</h4>
                         <p class="card-text">Hello Admin, I am writing to request information on acquiring a Husky dog</p>
@@ -131,7 +133,7 @@ const Dashboard = () => {
                     </blockquote>
                 </div>
                 <div class="card">
-                    <img class="card-img img-fluid" src="//placehold.it/600x200/777/fff?text=..." alt="Card image" />
+                    <img class="card-img img-fluid" src={Child} alt="Card image" />
                 </div>
                 <div class="card card-body text-center">
                     <h4 class="card-title"> Reminder</h4>
@@ -139,7 +141,7 @@ const Dashboard = () => {
                     <p class="card-text"><small class="text-muted">Last updated 5 mins ago</small></p>
                 </div>
                 <div class="card">
-                    <img class="card-img img-fluid" src="//placehold.it/600x200/777/fff?text=..." alt="Card image" />
+                    <img class="card-img img-fluid" src={Golden} alt="Card image" />
                 </div>
                 <div class="card card-body text-right">
                     <blockquote class="card-blockquote">
@@ -152,11 +154,11 @@ const Dashboard = () => {
                     </blockquote>
                 </div>
                 <div class="card">
-                    <img class="card-img img-fluid" src="//placehold.it/600x200/777/fff?text=..." alt="Card image" />
+                    <img class="card-img img-fluid" src={Girl} alt="Card image" />
                 </div>
                 <div class="card card-body text-right">
                     <blockquote class="card-blockquote">
-                        <p> Gaby and Elie have been connected and now the dog is in a safe place!</p>
+                        <p> Juliana and Rock have been connected and now the dog is in a safe place!</p>
                         <footer>
                             <small class="text-muted">
                                 Meeted at <cite title="Source Title">Dar Al Amar</cite>
@@ -164,14 +166,14 @@ const Dashboard = () => {
                         </footer>
                     </blockquote>
                 </div>
-                
+
                 <div class="card card-body">
                     <h4 class="card-title">Hana is waiting...</h4>
                     <p class="card-text">Hana is waiting for your approve to her request for more than 3 days. Please check it now before shi gets upset</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
                 <div class="card">
-                    <img class="card-img img-fluid" src="//placehold.it/600x200/777/fff?text=..." alt="Card image" />
+                    <img class="card-img img-fluid" src={Thanks} alt="Card image" />
                 </div>
                 <div class="card card-body">
                     <h4 class="card-title">New Update</h4>

@@ -14,6 +14,7 @@ import AnimalDetails from "./Components/AnimalDetails";
 import AllHistories from "./Components/AllHistories";
 import Profile from './Components/Profile';
 import Admin from "./Components/Admin/Admin";
+import User from "./Components/Admin/Users";
 // import AllSpecifications from "./Components/AllSpecifications";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/Admin" element={<Admin />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/users" element={<User />}></Route>
         <Route
           path="/allAnimals/:specificationId"
           element={<AllAnimals />}
