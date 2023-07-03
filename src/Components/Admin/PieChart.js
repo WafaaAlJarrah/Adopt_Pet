@@ -1,43 +1,88 @@
-import React from 'react';
-import { Pie } from 'react-chartjs-2';
- 
-const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'pink',
-        '#17a2b8',
-        '#ffc107',
-        'rgb(87, 185, 96)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-      ],
-      borderWidth: 1,
-    },
-  ],
+import React, { PureComponent } from 'react';
+import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
+
+const data = [
+  { name: 'Angora', value: 400 },
+  { name: 'Retreiver', value: 300 },
+  { name: 'Husky', value: 300 },
+  { name: 'Norwgian', value: 200 },
+];
+
+const renderActiveShape = (props) => {
+  const RADIAN = Math.PI / 180;
+  const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
+  const sin = Math.sin(-RADIAN * midAngle);
+  const cos = Math.cos(-RADIAN * midAngle);
+  const sx = cx + (outerRadius + 10) * cos;
+  const sy = cy + (outerRadius + 10) * sin;
+  const mx = cx + (outerRadius + 30) * cos;
+  const my = cy + (outerRadius + 30) * sin;
+  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
+  const ey = my;
+  const textAnchor = cos >= 0 ? 'start' : 'end';
+
+  return (
+    <g>
+      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+        {payload.name}
+      </text>
+      <Sector
+        cx={cx}
+        cy={cy}
+        innerRadius={innerRadius}
+        outerRadius={outerRadius}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        fill={"#fff"}
+      />
+      <Sector
+        cx={cx}
+        cy={cy}
+        startAngle={startAngle}
+        endAngle={endAngle}
+        innerRadius={outerRadius + 6}
+        outerRadius={outerRadius + 10}
+        fill={fill}
+      />
+      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
+      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#fff">{`PV ${value}`}</text>
+      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#fff">
+        {`(Rate ${(percent * 100).toFixed(2)}%)`}
+      </text>
+    </g>
+  );
 };
- 
-const PieChart = () => (
-  <>
-    <div className='header'>
-      
-      <div className='links'>
-         
-      </div>
-    </div>
-    <Pie data={data}  />
-  </>
-);
- 
-export default PieChart;
+
+export default class Example extends PureComponent {
+  static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-active-shape-y93si';
+
+  state = {
+    activeIndex: 0,
+  };
+
+  onPieEnter = (_, index) => {
+    this.setState({
+      activeIndex: index,
+    });
+  };
+
+  render() {
+    return (
+        <PieChart width={400} height={325} style={{backgroundColor: "#333", borderRadius: "8px"}}>
+          <Pie
+            activeIndex={this.state.activeIndex}
+            activeShape={renderActiveShape}
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={80}
+            fill="#02daff"
+            dataKey="value"
+            onMouseEnter={this.onPieEnter}
+          />
+        </PieChart>
+    );
+  }
+}
