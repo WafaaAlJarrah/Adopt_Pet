@@ -46,9 +46,6 @@ export default function Login() {
 
   return (
     <div className="form--container">
-      <h3>
-        Find your loyal companion and give them a forever home <br />
-      </h3>
       <form className="form" onSubmit={handleSubmit}>
         <img src={Logo} alt="background" height={200} />
         <input
