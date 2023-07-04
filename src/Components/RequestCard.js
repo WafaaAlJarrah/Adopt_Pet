@@ -39,13 +39,13 @@ function RequestCard({ request }) {
       </Card.Body>
 
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>Name: {animal.name}</ListGroup.Item>
-        <ListGroup.Item>Description: {animal.description}</ListGroup.Item>
-        <ListGroup.Item>Budget: {animal.budget}</ListGroup.Item>
-        <ListGroup.Item>Type: {animal.type}</ListGroup.Item>
-        <ListGroup.Item>Specification: {animal.specification.name}</ListGroup.Item>
+        <ListGroup.Item><b>Name:</b> {animal.name}</ListGroup.Item>
+        <ListGroup.Item><b>Description:</b> {animal.description}</ListGroup.Item>
+        <ListGroup.Item><b>Budget:</b> {animal.budget}</ListGroup.Item>
+        <ListGroup.Item><b>Type:</b> {animal.type}</ListGroup.Item>
+        <ListGroup.Item><b>Specification:</b> {animal.specification.name}</ListGroup.Item>
       </ListGroup>
-      <Card.Body style={{ textAlign: "center" }}>
+      <Card.Body style={{ textAlign: "left" }}>
         <AcceptRequestButton requestId={requestId} animalId={animalId} />
         <RejectRequestButtons requestId={requestId} animalId={animalId} />
       </Card.Body>
@@ -73,13 +73,13 @@ function RequestCard({ request }) {
       </Card.Body>
 
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>Name: {animal.name}</ListGroup.Item>
-        <ListGroup.Item>Description: {animal.description}</ListGroup.Item>
-        <ListGroup.Item>Budget: {animal.budget}</ListGroup.Item>
-        <ListGroup.Item>Type: {animal.type}</ListGroup.Item>
-        <ListGroup.Item>Specification: {animal.specification.name}</ListGroup.Item>
+      <ListGroup.Item><b>Name:</b> {animal.name}</ListGroup.Item>
+        <ListGroup.Item><b>Description:</b> {animal.description}</ListGroup.Item>
+        <ListGroup.Item><b>Budget:</b> {animal.budget}</ListGroup.Item>
+        <ListGroup.Item><b>Type:</b> {animal.type}</ListGroup.Item>
+        <ListGroup.Item><b>Specification:</b> {animal.specification.name}</ListGroup.Item>
       </ListGroup>
-      <Card.Body style={{ textAlign: "center" }}>
+      <Card.Body style={{ textAlign: "left" }}>
         <AcceptRequestButton requestId={requestId} animalId={animalId} />
         <RejectRequestButtons requestId={requestId} animalId={animalId} />
       </Card.Body>

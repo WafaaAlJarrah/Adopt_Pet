@@ -17,8 +17,8 @@ import Elie from '../../Images/Elie.jpg';
 import Hiba from '../../Images/Hiba.png';
 import Hani from '../../Images/Fayad.png';
 import Majed from '../../Images/2.jpg';
-import { green } from '@mui/material/colors';
 import Icon from '@mui/material/Icon';
+import Wafaa from '../../Images/Josiane.png';
 
 
 function createData(name, calories, fat, carbs, protein, price) {
@@ -126,7 +126,7 @@ Row.propTypes = {
 };
 
 const rows = [
-    createData(<Avatar src={Logo} />,'Wafaa Jarrah','Tripoli', 6,'Pending'),
+    createData(<Avatar src={Wafaa} />,'Wafaa Jarrah','Tripoli', 6,'Pending'),
     createData(<Avatar src={Elie} />,'Elie Kfoury','Koura', 9,'Pending'),
     createData(<Avatar src={Hiba} />,'Juliana Chami','Bsharre', 3, 'Approved'),
     createData(<Avatar src={Hani} />,'Hani Malas', 'Akkar',4, 'Rejected'),
