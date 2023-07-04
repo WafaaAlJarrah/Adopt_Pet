@@ -9,7 +9,7 @@ const Sidebar = () => {
                 <li class="nav-item mb-2"><a class="nav-link text-secondary" href="#"><i class="fas fa-file-export font-weight-bold"style={{color: "#fff"}}></i><span className="ml-3" style={{color: "#fff"}}>History</span></a></li>
                 <li class="nav-item mb-2"><a class="nav-link text-secondary" href="#"><i class="far fa-folder font-weight-bold"style={{color: "#fff"}}></i> <span className="ml-3" style={{color: "#fff"}}>Add New</span></a></li>
                 <li class="nav-item mb-2"><a class="nav-link text-secondary" href="/users"><i class="far fa-chart-bar font-weight-bold"style={{color: "#fff"}}></i> <span className="ml-3" style={{color: "#fff"}}>Users</span></a></li>
-                <li class="nav-item mb-2"><a class="nav-link text-secondary" href="#"><i class="fas fa-tablet-alt font-weight-bold"style={{color: "#fff"}}></i><span className="ml-3" style={{color: "#fff"}}>Requests</span></a></li>
+                <li class="nav-item mb-2"><a class="nav-link text-secondary" href="/AllRequests"><i class="fas fa-tablet-alt font-weight-bold"style={{color: "#fff"}}></i><span className="ml-3" style={{color: "#fff"}}>Requests</span></a></li>
             </ul>
        </div>
     )
