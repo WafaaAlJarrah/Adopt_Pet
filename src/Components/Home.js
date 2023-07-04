@@ -9,8 +9,8 @@ import Beta from "../Images/Main Home/BETA.png";
 import Karma from "../Images/Main Home/Karma.jpg";
 import Animal from "../Images/Main Home/AnimalLeb.png";
 import Laser from "../Images/Main Home/laser.png";
-import Dogs from "../Images/Main Home/Dog2.png";
-import Cats from "../Images/Main Home/Cats1.png";
+import Dogs from "../Images/Dogsbg.jpg";
+import Cats from "../Images/Catsbg.jpg";
 import { React, useState } from "react";
 import ModalCat from "./Modals/ModalC";
 import ModalDog from "./Modals/ModalD";
@@ -45,7 +45,7 @@ function Home() {
         <br></br>
       </section>
       <section id="ChooseAnimal">
-        <br></br>
+        <br></br><br></br>
         <h1 style={{ padding: "0px 40px" }}>
           <b> Find Your New Friend </b>
         </h1>
@@ -58,7 +58,7 @@ function Home() {
             <img className="AnimalModal" src={Cats} alt="About Us" />
             <ModalCat />
           </div>
-        </div>
+        </div><br></br><br></br>
       </section>
       <section id="about">
         <div className="AboutUsContainer ">
